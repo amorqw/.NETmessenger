@@ -1,5 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NETmessenger.Domain", "src\NETmessenger.Domain\NETmessenger.Domain.csproj", "{1152941A-96C7-440E-8C0D-0771DFE24141}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E257FA20-411D-4861-9E6E-1A669C3273E6}"
@@ -8,13 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NETmessenger.Web", "src\NET
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NETmessenger.Contracts", "src\NETmessenger.Contracts\NETmessenger.Contracts.csproj", "{4F742370-62FB-479E-A73B-5EC7C8C38FA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NETmessenger.Presenters", "src\NETmessenger.Presenters\NETmessenger.Presenters.csproj", "{07605256-4038-4BD6-8C73-D78D0FBCC573}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{033A2DFC-F012-447E-B72F-0531DC40A419}"
 	ProjectSection(SolutionItems) = preProject
 		Solution Items\.editorconfig = Solution Items\.editorconfig
 		Solution Items\Directory.Build.props = Solution Items\Directory.Build.props
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NETmessenger.TestClient", "src\NETmessenger.TestClient\NETmessenger.TestClient.csproj", "{9EA6F9D8-128A-464D-9D04-B31C9962293C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,15 +35,15 @@ Global
 		{4F742370-62FB-479E-A73B-5EC7C8C38FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F742370-62FB-479E-A73B-5EC7C8C38FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F742370-62FB-479E-A73B-5EC7C8C38FA0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07605256-4038-4BD6-8C73-D78D0FBCC573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07605256-4038-4BD6-8C73-D78D0FBCC573}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07605256-4038-4BD6-8C73-D78D0FBCC573}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07605256-4038-4BD6-8C73-D78D0FBCC573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA6F9D8-128A-464D-9D04-B31C9962293C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA6F9D8-128A-464D-9D04-B31C9962293C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA6F9D8-128A-464D-9D04-B31C9962293C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA6F9D8-128A-464D-9D04-B31C9962293C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1152941A-96C7-440E-8C0D-0771DFE24141} = {E257FA20-411D-4861-9E6E-1A669C3273E6}
 		{F926235F-4E30-4942-B759-146143CC8279} = {E257FA20-411D-4861-9E6E-1A669C3273E6}
 		{4F742370-62FB-479E-A73B-5EC7C8C38FA0} = {E257FA20-411D-4861-9E6E-1A669C3273E6}
-		{07605256-4038-4BD6-8C73-D78D0FBCC573} = {E257FA20-411D-4861-9E6E-1A669C3273E6}
+		{9EA6F9D8-128A-464D-9D04-B31C9962293C} = {E257FA20-411D-4861-9E6E-1A669C3273E6}
 	EndGlobalSection
 EndGlobal
