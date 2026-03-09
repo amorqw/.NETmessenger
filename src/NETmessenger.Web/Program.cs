@@ -29,9 +29,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<InMemoryMessengerStore>();
-builder.Services.AddSingleton<IUserService, InMemoryUserService>();
-builder.Services.AddSingleton<IChatService, InMemoryChatService>();
-builder.Services.AddSingleton<IMessageService, InMemoryMessageService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IChatService, ChatService>();
+builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DbConnection")));
 
