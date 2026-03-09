@@ -1,10 +1,5 @@
-using Microsoft.EntityFrameworkCore;
-using NETmessenger.Domain;
+using NETmessenger.Infrastructure;
 using NETmessenger.Web.Hubs;
-using NETmessenger.Web.Infrastructure;
-using NETmessenger.Web.Services.Chats;
-using NETmessenger.Web.Services.Messages;
-using NETmessenger.Web.Services.Users;
 
 const string DevClientCorsPolicy = "DevClient";
 
@@ -19,8 +14,12 @@ builder.Services.AddCors(options =>
         policy.WithOrigins(
                 "http://localhost:5066",
                 "https://localhost:5066",
+                "http://localhost:5067",
+                "https://localhost:5067",
                 "http://127.0.0.1:5066",
-                "https://127.0.0.1:5066")
+                "https://127.0.0.1:5066",
+                "http://127.0.0.1:5067",
+                "https://127.0.0.1:5067")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -28,12 +27,7 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<InMemoryMessengerStore>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IChatService, ChatService>();
-builder.Services.AddScoped<IMessageService, MessageService>();
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DbConnection")));
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 

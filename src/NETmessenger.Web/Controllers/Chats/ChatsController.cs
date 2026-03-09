@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using NETmessenger.Application.Abstractions.Chats;
+using NETmessenger.Application.Exceptions;
 using NETmessenger.Contracts.Chats;
-using NETmessenger.Web.Services.Chats;
-using NETmessenger.Web.Services.Exceptions;
 
 namespace NETmessenger.Web.Controllers.Chats;
 

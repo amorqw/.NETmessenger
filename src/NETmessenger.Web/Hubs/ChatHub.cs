@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
+using NETmessenger.Application.Abstractions.Messages;
 using NETmessenger.Contracts.Messages;
-using NETmessenger.Web.Services.Messages;
 
 namespace NETmessenger.Web.Hubs;
 

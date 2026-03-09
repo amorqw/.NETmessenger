@@ -1,6 +1,6 @@
 using NETmessenger.Contracts.Users;
 
-namespace NETmessenger.Web.Services.Users;
+namespace NETmessenger.Application.Abstractions.Users;
 
 public interface IUserService
 {

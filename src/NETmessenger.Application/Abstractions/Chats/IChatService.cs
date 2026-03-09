@@ -1,6 +1,6 @@
 using NETmessenger.Contracts.Chats;
 
-namespace NETmessenger.Web.Services.Chats;
+namespace NETmessenger.Application.Abstractions.Chats;
 
 public interface IChatService
 {

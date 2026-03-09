@@ -1,6 +1,6 @@
 using NETmessenger.Contracts.Messages;
 
-namespace NETmessenger.Web.Services.Messages;
+namespace NETmessenger.Application.Abstractions.Messages;
 
 public interface IMessageService
 {

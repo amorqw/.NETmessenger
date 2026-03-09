@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace NETmessenger.Domain.Migrations
+namespace NETmessenger.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class Init : Migration

@@ -482,3 +482,6 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Local-only manual test frontend
+/src/NETmessenger.TestClient/

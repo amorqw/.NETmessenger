@@ -1,4 +1,4 @@
-namespace NETmessenger.Web.Services.Exceptions;
+namespace NETmessenger.Application.Exceptions;
 
 public sealed class DomainValidationException : Exception
 {

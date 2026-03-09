@@ -11,13 +11,13 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\\NETmessenger.Application\\NETmessenger.Application.csproj" />
         <ProjectReference Include="..\NETmessenger.Contracts\NETmessenger.Contracts.csproj" />
-        <ProjectReference Include="..\NETmessenger.Domain\NETmessenger.Domain.csproj" />
+        <ProjectReference Include="..\\NETmessenger.Infrastructure\\NETmessenger.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using NETmessenger.Application.Abstractions.Users;
+using NETmessenger.Application.Exceptions;
 using NETmessenger.Contracts.Users;
-using NETmessenger.Web.Services.Exceptions;
-using NETmessenger.Web.Services.Users;
 
 namespace NETmessenger.Web.Controllers.Users;
 
