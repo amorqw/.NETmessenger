@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NETmessenger.Application.Abstractions.Users;
 using NETmessenger.Application.Exceptions;
@@ -7,8 +8,11 @@ namespace NETmessenger.Web.Controllers.Users;
 
 [ApiController]
 [Route("api/users")]
-public class UsersController(IUserService userService) : ControllerBase
+public class UsersController(IUserService userService, IConfiguration configuration) : ControllerBase
 {
+
+    private readonly IConfiguration _configuration = configuration;
+
     [HttpGet]
     public async Task<ActionResult<IReadOnlyCollection<GetUserDto>>> GetAll(CancellationToken cancellationToken)
     {
@@ -17,19 +21,23 @@ public class UsersController(IUserService userService) : ControllerBase
     }
 
     [HttpGet("{userId:guid}")]
+    [Authorize]
     public async Task<ActionResult<GetUserDto>> GetById(Guid userId, CancellationToken cancellationToken)
     {
         var user = await userService.GetByIdAsync(userId, cancellationToken);
         return user is null ? NotFound() : Ok(user);
     }
 
-    [HttpPost]
-    public async Task<ActionResult<GetUserDto>> Create([FromBody] CreateUserDto dto, CancellationToken cancellationToken)
+
+    [HttpPost("register")]
+    public async Task<ActionResult<AuthResponseDto>> Register(
+        [FromBody] RegisterUserDto dto, 
+        CancellationToken cancellationToken)
     {
         try
         {
-            var user = await userService.CreateAsync(dto, cancellationToken);
-            return CreatedAtAction(nameof(GetById), new { userId = user.UserId }, user);
+            var result = await userService.RegisterAsync(dto, cancellationToken);
+            return Ok(result);
         }
         catch (ConflictException ex)
         {
@@ -41,7 +49,40 @@ public class UsersController(IUserService userService) : ControllerBase
         }
     }
 
+    [HttpPost("login")]
+    public async Task<ActionResult<AuthResponseDto>> Login(
+        [FromBody] LoginUserDto dto, 
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            var result = await userService.LoginAsync(dto, cancellationToken);
+
+            var expirationHours = int.TryParse(
+                _configuration["JwtSettings:TokenExpirationHours"], 
+                out var h) ? h : 12;
+
+            Response.Cookies.Append("auth_token", result.Token, new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = DateTime.UtcNow.AddHours(expirationHours)
+            });
+
+            return Ok(result);
+        }
+        catch (ResourceNotFoundException)
+        {
+            return Unauthorized(new { error = "Invalid credentials" });
+        }
+        catch (DomainValidationException ex)
+        {
+            return Unauthorized(new { error = ex.Message });
+        }
+    }
+
+
     [HttpPut("{userId:guid}")]
+    [Authorize]
     public async Task<ActionResult<GetUserDto>> Update(Guid userId, [FromBody] UpdateUserDto dto, CancellationToken cancellationToken)
     {
         try
