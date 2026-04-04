@@ -26,4 +26,14 @@ public class ChatHub(IMessageService messageService) : Hub
     {
         return $"chat:{chatId:D}";
     }
+    
+    private async Task StartTyping(Guid chatId, Guid userId)
+    {
+        await Clients.Group(GetChatGroup(chatId)).SendAsync("UserTyping", userId);
+    }
+    
+    private async Task StopTyping(Guid chatId, Guid userId)
+    {
+        await Clients.Group(GetChatGroup(chatId)).SendAsync("UserStoppedTyping", userId);
+    }
 }
