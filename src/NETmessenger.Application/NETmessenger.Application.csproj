@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NETmessenger.Contracts\NETmessenger.Contracts.csproj" />
+    <ProjectReference Include="..\NETmessenger.Domain\NETmessenger.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstractions\Auth\" />
   </ItemGroup>
 
 </Project>

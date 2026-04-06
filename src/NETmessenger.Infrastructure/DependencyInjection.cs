@@ -8,6 +8,13 @@ using NETmessenger.Infrastructure.Persistence;
 using NETmessenger.Infrastructure.Services.Chats;
 using NETmessenger.Infrastructure.Services.Messages;
 using NETmessenger.Infrastructure.Services.Users;
+using NETmessenger.Infrastructure.Services;
+
+
+
+using NETmessenger.Application.Abstractions.Auth;
+using NETmessenger.Domain.Entities;
+using NETmessenger.Infrastructure.Services.Auth;
 
 namespace NETmessenger.Infrastructure;
 
@@ -26,6 +33,8 @@ public static class DependencyInjection
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IChatService, ChatService>();
         services.AddScoped<IMessageService, MessageService>();
+        services.AddScoped<IPasswordHasher, PasswordHasher>();
+        services.AddScoped<IJwtService, JwtService>();
 
         return services;
     }
