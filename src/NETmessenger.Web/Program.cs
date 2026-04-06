@@ -82,6 +82,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(DevClientCorsPolicy);
+app.UseStaticFiles();
 
 app.MapControllers();
 app.UseAuthentication();
@@ -92,3 +93,5 @@ app.MapHub<ChatHub>("/hubs/chat");
 
 
 app.Run();
+
+public partial class Program { }

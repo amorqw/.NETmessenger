@@ -2,10 +2,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NETmessenger.Application.Abstractions.Chats;
+using NETmessenger.Application.Abstractions.Files;
 using NETmessenger.Application.Abstractions.Messages;
 using NETmessenger.Application.Abstractions.Users;
 using NETmessenger.Infrastructure.Persistence;
 using NETmessenger.Infrastructure.Services.Chats;
+using NETmessenger.Infrastructure.Services.Files;
 using NETmessenger.Infrastructure.Services.Messages;
 using NETmessenger.Infrastructure.Services.Users;
 using NETmessenger.Infrastructure.Services;
@@ -33,6 +35,7 @@ public static class DependencyInjection
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IChatService, ChatService>();
         services.AddScoped<IMessageService, MessageService>();
+        services.AddScoped<IVoiceStorage, LocalVoiceStorage>();
         services.AddScoped<IPasswordHasher, PasswordHasher>();
         services.AddScoped<IJwtService, JwtService>();
 
