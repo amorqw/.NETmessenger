@@ -11,7 +11,22 @@ public class MessageConfiguration : IEntityTypeConfiguration<Message>
         builder.HasKey(m => m.Id);
 
         builder.Property(m => m.Text)
+            .IsRequired(false);
+
+        builder.Property(m => m.Type)
             .IsRequired();
+
+        builder.Property(m => m.AudioUrl)
+            .IsRequired(false);
+
+        builder.Property(m => m.AudioContentType)
+            .IsRequired(false);
+
+        builder.Property(m => m.AudioDurationSeconds)
+            .IsRequired(false);
+
+        builder.Property(m => m.AudioSizeBytes)
+            .IsRequired(false);
 
         builder.HasOne(m => m.Sender)
             .WithMany(u => u.Messages)

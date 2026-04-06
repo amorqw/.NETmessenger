@@ -22,7 +22,7 @@ public class ChatHub(IMessageService messageService) : Hub
         await Clients.Group(GetChatGroup(chatId)).SendAsync("MessageReceived", message);
     }
 
-    private static string GetChatGroup(Guid chatId)
+    public static string GetChatGroup(Guid chatId)
     {
         return $"chat:{chatId:D}";
     }
