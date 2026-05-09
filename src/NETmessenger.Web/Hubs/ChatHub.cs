@@ -36,4 +36,24 @@ public class ChatHub(IMessageService messageService) : Hub
     {
         await Clients.Group(GetChatGroup(chatId)).SendAsync("UserStoppedTyping", userId);
     }
+
+    private async Task StartVoiceCall(Guid chatId)
+    {
+        await Clients.Group(GetChatGroup(chatId)).SendAsync("VoiceCallStarted");
+    }
+    
+    private async Task EndVoiceCall(Guid chatId)
+    {
+        await Clients.Group(GetChatGroup(chatId)).SendAsync("VoiceCallEnded");
+    }
+    
+    private async Task EnterVoice(Guid chatId, Guid userId)
+    {
+        await Clients.Group(GetChatGroup(chatId)).SendAsync("UserEnteredVoice", userId);
+    }
+    
+    private async Task LeaveVoice(Guid chatId, Guid userId)
+    {
+        await Clients.Group(GetChatGroup(chatId)).SendAsync("UserLeftVoice", userId);
+    }
 }
